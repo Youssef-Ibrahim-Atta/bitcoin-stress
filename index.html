@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BITCOIN BLACKOUT: LIGHTNING WARRIOR MODE</title>
+  <style>
+    /* === NUCLEAR ORANGE THEME === */
+    :root {
+      --orange: #f7931a;
+      --orange-dark: #e07b10;
+      --orange-light: #ffaa33;
+      --matrix-green: #0f0;
+      --dark: #0a0a12;
+      --darker: #05050a;
+      --neon-glow: 0 0 10px var(--orange), 0 0 20px rgba(247, 147, 26, 0.7);
+      --text: #fff;
+      --text-dim: #aaa;
+    }
+
+    @font-face {
+      font-family: 'Cyber';
+      src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Courier New', monospace;
+      background-color: var(--dark);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(224, 123, 16, 0.15) 0%, transparent 25%),
+        radial-gradient(circle at 80% 70%, rgba(247, 147, 26, 0.15) 0%, transparent 25%);
+      position: relative;
+    }
+
+    /* === TERMINAL NOISE === */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.7)), 
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="1" height="1" fill="rgba(255,255,255,0.03)"/></svg>');
+      pointer-events: none;
+      z-index: -1;
+      opacity: 0.8;
+    }
+
+    /* === LIGHTNING ANIMATION (MORE INTENSE) === */
+    .lightning {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      z-index: -2;
+      overflow: hidden;
+    }
+
+    .lightning::before {
+      content: "";
+      position: absolute;
+      top: -100%;
+      left: 50%;
+      width: 1px;
+      height: 300px;
+      background: linear-gradient(to bottom, transparent, var(--orange-light), transparent);
+      animation: lightning 3s linear infinite;
+      opacity: 0;
+      filter: blur(1px);
+    }
+
+    @keyframes lightning {
+      0% { opacity: 0; transform: translateX(-50%) translateY(-100%); }
+      1% { opacity: 0.8; }
+      1.5% { opacity: 0; }
+      3% { opacity: 0; transform: translateX(calc(-50% + 10px)) translateY(-80%); }
+      3.5% { opacity: 0.6; }
+      4% { opacity: 0; transform: translateX(calc(-50% - 15px)) translateY(30%); }
+      4.5% { opacity: 0.9; }
+      5% { opacity: 0; transform: translateX(-50%) translateY(100vh); }
+      100% { opacity: 0; }
+    }
+
+    /* === BLACKOUT MODE (PSYCHEDELIC CHAOS) === */
+    body.blackout {
+      animation: glitch 0.3s infinite alternate;
+    }
+
+    @keyframes glitch {
+      0% { filter: contrast(2) brightness(1.5) hue-rotate(0deg); }
+      10% { filter: contrast(2.5) brightness(1.3) hue-rotate(5deg); }
+      20% { filter: contrast(1.8) brightness(1.7) hue-rotate(-3deg); }
+      30% { filter: contrast(2.2) brightness(1.4) hue-rotate(2deg); }
+      40% { filter: contrast(1.9) brightness(1.6) hue-rotate(-1deg); }
+      50% { filter: contrast(2.3) brightness(1.5) hue-rotate(3deg); }
+      60% { filter: contrast(2) brightness(1.8) hue-rotate(-2deg); }
+      70% { filter: contrast(2.4) brightness(1.3) hue-rotate(4deg); }
+      80% { filter: contrast(1.7) brightness(1.9) hue-rotate(-4deg); }
+      90% { filter: contrast(2.1) brightness(1.6) hue-rotate(1deg); }
+      100% { filter: contrast(2.5) brightness(1.5) hue-rotate(0deg); }
+    }
+
+    /* === MAIN CONTAINER (MILITARY COMMAND CENTER STYLE) === */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      position: relative;
+    }
+
+    /* === WARRIOR COMMAND PANEL === */
+    .command-panel {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    /* === LEFT SIDE: USER WARRIOR DASHBOARD === */
+    .warrior-dashboard {
+      background: rgba(10, 10, 18, 0.9);
+      border: 1px solid rgba(247, 147, 26, 0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 0 30px rgba(247, 147, 26, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .warrior-dashboard::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange-dark), var(--orange-light));
+    }
+
+    /* === RIGHT SIDE: NETWORK BATTLEGROUND === */
+    .network-battleground {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* === STAT CARD (TERMINAL STYLE) === */
+    .stat-card {
+      background: rgba(15, 15, 25, 0.8);
+      border: 1px solid rgba(247, 147, 26, 0.2);
+      border-radius: 8px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--orange-dark), var(--orange-light));
+    }
+
+    /* === WARRIOR STATS === */
+    .warrior-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .stat {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-label {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-value {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.4rem;
+      color: var(--orange-light);
+      text-shadow: 0 0 5px rgba(247, 147, 26, 0.5);
+    }
+
+    /* === NUCLEAR TRANSACTION BUTTON === */
+    .nuke-button {
+      background: linear-gradient(135deg, var(--orange-dark), var(--orange));
+      border: none;
+      color: black;
+      padding: 1.2rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 5px 15px rgba(247, 147, 26, 0.5);
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-top: 2rem;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .nuke-button::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        transparent,
+        transparent,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent,
+        transparent,
+        transparent
+      );
+      transform: rotate(30deg);
+      animation: nukeShine 3s infinite;
+      z-index: -1;
+    }
+
+    @keyframes nukeShine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
+    }
+
+    .nuke-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(247, 147, 26, 0.7);
+    }
+
+    .nuke-button:active {
+      transform: translateY(1px);
+      box-shadow: 0 3px 10px rgba(247, 147, 26, 0.5);
+    }
+
+    /* === NETWORK HEALTH CARD === */
+    .network-health {
+      height: 100%;
+    }
+
+    .health-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    /* === NETWORK GRAPH (BATTLEFIELD VISUALIZATION) === */
+    .network-graph {
+      height: 200px;
+      width: 100%;
+      position: relative;
+      margin-top: 1.5rem;
+    }
+
+    .graph-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      stroke: var(--orange);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    .graph-area {
+      fill: rgba(247, 147, 26, 0.1);
+    }
+
+    /* === LEADERBOARD (WARRIOR RANKINGS) === */
+    .leaderboard {
+      height: 100%;
+    }
+
+    .leaderboard ol {
+      list-style: none;
+      counter-reset: leaderboard;
+      margin-top: 1.5rem;
+    }
+
+    .leaderboard li {
+      padding: 1rem;
+      border-bottom: 1px solid rgba(247, 147, 26, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.3s;
+    }
+
+    .leaderboard li:hover {
+      background: rgba(247, 147, 26, 0.05);
+    }
+
+    .leaderboard li::before {
+      counter-increment: leaderboard;
+      content: counter(leaderboard);
+      font-family: 'Orbitron', sans-serif;
+      color: var(--orange);
+      margin-right: 1rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .leaderboard li:nth-child(1)::before {
+      color: gold;
+      content: "🥇";
+    }
+
+    .leaderboard li:nth-child(2)::before {
+      color: silver;
+      content: "🥈";
+    }
+
+    .leaderboard li:nth-child(3)::before {
+      color: #cd7f32;
+      content: "🥉";
+    }
+
+    .leaderboard-name {
+      flex-grow: 1;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .leaderboard-value {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--orange-light);
+    }
+
+    /* === BLACKOUT TOGGLE (ARMAGEDDON SWITCH) === */
+    .blackout-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: linear-gradient(135deg, #e74c3c, #c0392b);
+      border: none;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      z-index: 999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .blackout-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 20px rgba(231, 76, 60, 0.6);
+    }
+
+    .blackout-toggle.pulse {
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+      70% { box-shadow: 0 0 0 15px rgba(231, 76, 60, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+    }
+
+    /* === TRANSACTION ANIMATION (SATOSHI MISSILES) === */
+    .tx-missile {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1000;
+      font-family: 'Orbitron', sans-serif;
+      color: var(--orange-light);
+      text-shadow: var(--neon-glow);
+      animation: missileLaunch 1.5s forwards;
+      opacity: 0;
+    }
+
+    @keyframes missileLaunch {
+      0% { transform: translateY(100px) scale(0.5); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+    }
+
+    /* === EMERGENCY ALERT (RED ALERT) === */
+    .alert {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(231, 76, 60, 0.9);
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      animation: alertPulse 1s infinite;
+      display: none;
+      z-index: 1000;
+      box-shadow: 0 0 20px rgba(231, 76, 60, 0.7);
+    }
+
+    @keyframes alertPulse {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.05); }
+      100% { transform: translateX(-50%) scale(1); }
+    }
+
+    /* === HEADER (WAR DECLARATION) === */
+    header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--orange), transparent);
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      color: var(--orange);
+      text-shadow: var(--neon-glow);
+      margin-bottom: 0.5rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      color: var(--text-dim);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .countdown {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      color: var(--orange-light);
+      margin-top: 1rem;
+    }
+
+    /* === RESPONSIVE DESIGN (MOBILE WARRIORS) === */
+    @media (max-width: 768px) {
+      .command-panel {
+        grid-template-columns: 1fr;
+      }
+      
+      header {
+        padding: 2rem 0 1.5rem;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .warrior-stats,
+      .health-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="lightning"></div>
+  <button class="blackout-toggle" id="blackoutToggle">☠️ ARMAGEDDON MODE ☠️</button>
+  <div class="alert" id="alert">⚡ CRITICAL NETWORK FAILURE ⚡</div>
+  
+  <div class="container">
+    <header>
+      <h1>LIGHTNING WARRIOR</h1>
+      <p class="subtitle">Bitcoin Blackout: Maximum Overdrive</p>
+      <div class="countdown" id="countdown">BATTLE TIME: <span id="hours">24</span>:<span id="minutes">00</span>:<span id="seconds">00</span></div>
+    </header>
+
+    <div class="command-panel">
+      <!-- LEFT SIDE: WARRIOR DASHBOARD -->
+      <div class="warrior-dashboard">
+        <h2>YOUR WARRIOR STATS</h2>
+        <div class="warrior-stats">
+          <div class="stat">
+            <span class="stat-label">Transactions Fired</span>
+            <span class="stat-value" id="userTx">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Attack Speed</span>
+            <span class="stat-value" id="userSpeed">0 tx/s</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Precision</span>
+            <span class="stat-value" id="userEff">0%</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Sats Captured</span>
+            <span class="stat-value" id="userSats">0</span>
+          </div>
+        </div>
+        
+        <!-- NUCLEAR TRANSACTION BUTTON (NOW IN THE RIGHT PLACE) -->
+        <button class="nuke-button" id="sendTx">
+          ⚡ FIRE TRANSACTION MISSILE ⚡
+        </button>
+      </div>
+
+      <!-- RIGHT SIDE: NETWORK BATTLEGROUND -->
+      <div class="network-battleground">
+        <div class="stat-card network-health">
+          <h2>NETWORK BATTLEFIELD</h2>
+          <div class="health-stats">
+            <div class="stat">
+              <span class="stat-label">Liquidity</span>
+              <span class="stat-value" id="liq">100%</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Success Rate</span>
+              <span class="stat-value" id="routeSuccess">100%</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Enemy Failures</span>
+              <span class="stat-value" id="routeFail">0%</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Active Nodes</span>
+              <span class="stat-value" id="nodes">12,845</span>
+            </div>
+          </div>
+          <div class="network-graph">
+            <svg width="100%" height="100%" viewBox="0 0 300 100" preserveAspectRatio="none">
+              <path class="graph-line" id="networkGraph" d="M0,100 L50,80 L100,60 L150,90 L200,70 L250,50 L300,80" />
+              <path class="graph-area" id="networkGraphArea" d="M0,100 L50,80 L100,60 L150,90 L200,70 L250,50 L300,80 L300,100 Z" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="stat-card leaderboard">
+          <h2>WARRIOR RANKINGS</h2>
+          <ol id="leaderboard">
+            <li>
+              <span class="leaderboard-name">SatoshiRider</span>
+              <span class="leaderboard-value">1,204 tx</span>
+            </li>
+            <li>
+              <span class="leaderboard-name">NodeWarrior</span>
+              <span class="leaderboard-value">982 tx</span>
+            </li>
+            <li>
+              <span class="leaderboard-name">ZapMaster</span>
+              <span class="leaderboard-value">875 tx</span>
+            </li>
+            <li>
+              <span class="leaderboard-name">LightningStrike</span>
+              <span class="leaderboard-value">756 tx</span>
+            </li>
+            <li>
+              <span class="leaderboard-name">BlockClock</span>
+              <span class="leaderboard-value">689 tx</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // === GLOBAL WARRIOR STATE ===
+    let txCount = 0;
+    let speed = 0;
+    let efficiency = 95;
+    let liquidity = 100;
+    let successRate = 100;
+    let failRate = 0;
+    let nodesOnline = 12845;
+    let satsEarned = 0;
+    let blackoutActive = false;
+    let networkStability = 100;
+
+    // === REALISTIC NETWORK WARFARE SIMULATION ===
+    function updateData() {
+      // Armageddon mode intensifies everything
+      const chaosFactor = blackoutActive ? 5 : 1;
+      
+      // Simulate network battlefield
+      txCount += Math.floor(Math.random() * (5 * chaosFactor)) + 1;
+      speed = txCount / (60 + Math.random() * 40);
+      efficiency = Math.max(60, 95 - (Math.random() * 15 * chaosFactor));
+      liquidity = Math.max(40, 90 - (Math.random() * 25 * chaosFactor));
+      successRate = Math.max(30, 85 - (Math.random() * 30 * chaosFactor));
+      failRate = Math.min(50, Math.random() * 15 * chaosFactor);
+      nodesOnline = 12845 + Math.floor(Math.random() * 500 - (300 * chaosFactor));
+      satsEarned += Math.floor(Math.random() * (15 * chaosFactor));
+      
+      // Network stability decreases during blackout
+      if (blackoutActive) {
+        networkStability = Math.max(20, networkStability - Math.random() * 8);
+        if (networkStability < 40 && Math.random() > 0.7) {
+          triggerEmergencyAlert();
+        }
+      } else {
+        networkStability = Math.min(100, networkStability + Math.random() * 3);
+      }
+      
+      // Update DOM
+      document.getElementById("userTx").textContent = txCount.toLocaleString();
+      document.getElementById("userSpeed").textContent = speed.toFixed(1) + " tx/s";
+      document.getElementById("userEff").textContent = efficiency.toFixed(1) + "%";
+      document.getElementById("liq").textContent = liquidity.toFixed(1) + "%";
+      document.getElementById("routeSuccess").textContent = successRate.toFixed(1) + "%";
+      document.getElementById("routeFail").textContent = failRate.toFixed(1) + "%";
+      document.getElementById("nodes").textContent = nodesOnline.toLocaleString();
+      document.getElementById("userSats").textContent = satsEarned.toLocaleString();
+      
+      // Update network graph
+      updateNetworkGraph();
+      
+      // Random leaderboard updates
+      if (Math.random() > 0.7) updateLeaderboard();
+    }
+
+    // === NETWORK GRAPH ANIMATION ===
+    function updateNetworkGraph() {
+      const points = [];
+      const steps = 6;
+      const height = 100;
+      
+      for (let i = 0; i <= steps; i++) {
+        const x = i * (300 / steps);
+        const y = height - (
+          (i === 0 ? successRate : 
+           i === 1 ? liquidity : 
+           i === 2 ? efficiency : 
+           i === 3 ? 100 - failRate : 
+           i === 4 ? (successRate + liquidity) / 2 : 
+           i === 5 ? (efficiency + (100 - failRate)) / 2 : 
+           successRate) * 0.9 + Math.random() * (blackoutActive ? 30 : 15)
+        );
+        points.push(`${x},${y}`);
+      }
+      
+      const path = points.join(" ");
+      document.getElementById("networkGraph").setAttribute("d", `M${path}`);
+      document.getElementById("networkGraphArea").setAttribute("d", `M${path} L300,100 L0,100 Z`);
+    }
+
+    // === DYNAMIC LEADERBOARD ===
+    function updateLeaderboard() {
+      const leaderboard = document.getElementById("leaderboard");
+      const entries = Array.from(leaderboard.children);
+      
+      entries.forEach(entry => {
+        const currentTx = parseInt(entry.querySelector(".leaderboard-value").textContent.replace(/,/g, ''));
+        const increment = Math.floor(Math.random() * (blackoutActive ? 25 : 12)) + 1;
+        const newTx = currentTx + increment;
+        entry.querySelector(".leaderboard-value").textContent = newTx.toLocaleString() + " tx";
+      });
+      
+      // Sort leaderboard
+      const sortedEntries = entries.sort((a, b) => {
+        const aTx = parseInt(a.querySelector(".leaderboard-value").textContent.replace(/,/g, '').replace(' tx', ''));
+        const bTx = parseInt(b.querySelector(".leaderboard-value").textContent.replace(/,/g, '').replace(' tx', ''));
+        return bTx - aTx;
+      });
+      
+      // Re-append sorted entries
+      sortedEntries.forEach(entry => leaderboard.appendChild(entry));
+    }
+
+    // === COUNTDOWN TIMER (24 HOURS) ===
+    const endTime = new Date().getTime() + 24 * 60 * 60 * 1000;
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = endTime - now;
+      
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      
+      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+    }
+
+    // === ARMAGEDDON MODE (TOTAL WAR) ===
+    function toggleBlackout() {
+      blackoutActive = !blackoutActive;
+      document.body.classList.toggle("blackout");
+      document.getElementById("blackoutToggle").textContent = blackoutActive ? "☠️ ARMAGEDDON ACTIVE ☠️" : "⚡ ACTIVATE ARMAGEDDON ⚡";
+      
+      if (blackoutActive) {
+        document.getElementById("blackoutToggle").classList.add("pulse");
+        // More frequent updates during blackout
+        clearInterval(dataInterval);
+        dataInterval = setInterval(updateData, 300);
+        // Intense lightning strikes
+        setInterval(() => {
+          if (Math.random() > 0.6) {
+            document.querySelector(".lightning").style.opacity = "1";
+            setTimeout(() => {
+              document.querySelector(".lightning").style.opacity = "0";
+            }, 100);
+          }
+        }, 800);
+      } else {
+        document.getElementById("blackoutToggle").classList.remove("pulse");
+        clearInterval(dataInterval);
+        dataInterval = setInterval(updateData, 1500);
+      }
+    }
+
+    // === EMERGENCY ALERT (RED ALERT) ===
+    function triggerEmergencyAlert() {
+      const alert = document.getElementById("alert");
+      alert.style.display = "block";
+      setTimeout(() => {
+        alert.style.display = "none";
+      }, 3000);
+    }
+
+    // === TRANSACTION MISSILE ANIMATION ===
+    function fireTransactionMissile() {
+      const missile = document.createElement("div");
+      missile.className = "tx-missile";
+      missile.textContent = `🚀 +${Math.floor(Math.random() * 100) + 50} SATS`;
+      
+      // Random position at bottom
+      const x = Math.random() * window.innerWidth;
+      missile.style.left = `${x}px`;
+      missile.style.bottom = "100px";
+      
+      document.body.appendChild(missile);
+      
+      // Remove after animation
+      setTimeout(() => {
+        missile.remove();
+      }, 1500);
+    }
+
+    // === INITIALIZE WARRIOR SYSTEM ===
+    let dataInterval = setInterval(updateData, 1500);
+    setInterval(updateCountdown, 1000);
+    updateData();
+    updateNetworkGraph();
+    
+    // === EVENT LISTENERS ===
+    document.getElementById("blackoutToggle").addEventListener("click", toggleBlackout);
+    document.getElementById("sendTx").addEventListener("click", () => {
+      txCount += 1;
+      satsEarned += Math.floor(Math.random() * 30) + 10;
+      document.getElementById("userTx").textContent = txCount.toLocaleString();
+      document.getElementById("userSats").textContent = satsEarned.toLocaleString();
+      fireTransactionMissile();
+      
+      // Small chance to jump on leaderboard
+      if (Math.random() > 0.9) updateLeaderboard();
+    });
+  </script>
+</body>
+</html>
